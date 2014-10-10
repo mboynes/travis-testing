@@ -1,4 +1,4 @@
-![Travis CI Build Status](https://travis-ci.org/mboynes/travis-testing.svg?branch=master)
+[![Travis CIBuild Status](https://travis-ci.org/mboynes/travis-testing.svg?branch=master)](https://travis-ci.org/mboynes/travis-testing)
 
 Theme CI Testing Demo
 =====================
