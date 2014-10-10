@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<ruleset name="WordPress Theme Coding Standards Configuration">
+	<!-- Set a description for this ruleset. -->
+	<description>Code standard rules to check against a WordPress Theme.</description>
+
+	<!-- Include the WordPress ruleset, with exclusions. -->
+	<rule ref="WordPress"></rule>
+</ruleset>
