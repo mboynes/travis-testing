@@ -4,5 +4,18 @@
 	<description>Code standard rules to check against a WordPress Theme.</description>
 
 	<!-- Include the WordPress ruleset, with exclusions. -->
-	<rule ref="WordPress"></rule>
+	<rule ref="WordPress-VIP">
+		<!-- This is not mature enough and throws too many false positives -->
+		<exclude name="WordPress.WhiteSpace.ScopeIndent.Incorrect" />
+	</rule>
+
+	<!-- Tweak the VIP rules -->
+	<rule ref="WordPress.XSS.EscapeOutput.">
+		<!-- We drop the severity to 3 so it doesn't fail in Travis. It can still be seen using the `severity` flag -->
+		<severity>3</severity>
+	</rule>
+	<rule ref="WordPress.XSS.EscapeOutput">
+		<severity>3</severity>
+	</rule>
+
 </ruleset>

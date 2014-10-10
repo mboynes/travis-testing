@@ -17,7 +17,7 @@ php:
     # aliased to a recent 5.3.x version
     - "5.3"
     # Current $required_php_version for WordPress: 5.2.4
-    - "5.2"
+    # - "5.2"
 
 # Declare which versions of WordPress to test against.
 # Also declare whether or not to test in Multisite.
@@ -26,14 +26,18 @@ env:
     # @link https://github.com/WordPress/WordPress
     - WP_VERSION=master WP_MULTISITE=0
     - WP_VERSION=master WP_MULTISITE=1
+    # WordPress 4.0
+    # @link https://github.com/WordPress/WordPress/tree/4.0-branch
+    - WP_VERSION=4.0 WP_MULTISITE=0
+    - WP_VERSION=4.0 WP_MULTISITE=1
     # WordPress 3.9
     # @link https://github.com/WordPress/WordPress/tree/3.9-branch
-    - WP_VERSION=3.9 WP_MULTISITE=0
-    - WP_VERSION=3.9 WP_MULTISITE=1
+    # - WP_VERSION=3.9 WP_MULTISITE=0
+    # - WP_VERSION=3.9 WP_MULTISITE=1
     # WordPress 3.8
     # @link https://github.com/WordPress/WordPress/tree/3.8-branch
-    - WP_VERSION=3.8 WP_MULTISITE=0
-    - WP_VERSION=3.8 WP_MULTISITE=1
+    # - WP_VERSION=3.8 WP_MULTISITE=0
+    # - WP_VERSION=3.8 WP_MULTISITE=1
 
 # Declare 5.6 beta in test matrix.
 # @link https://buddypress.trac.wordpress.org/ticket/5620
@@ -62,8 +66,8 @@ before_script:
     - mkdir -p $WP_DEVELOP_DIR
     # Use the Git mirror of WordPress.
     - git clone --depth=50 --branch="$WP_VERSION" git://develop.git.wordpress.org/ $WP_DEVELOP_DIR
-    # Set up theme information.
-    - theme_slug=$(pwd | sed 's/.*\/themes\///')
+    # Set up theme information. If this is a VIP theme, add the vip/ prefix
+    - theme_slug=$(basename $(pwd))
     - mkdir -p "/tmp/wordpress/src/wp-content/themes/$theme_slug"
     - cp -R . "/tmp/wordpress/src/wp-content/themes/$theme_slug/"    # Set up WordPress configuration.
     - cd $WP_DEVELOP_DIR
