@@ -38,7 +38,13 @@ function travis_testing_setup() {
 	 *
 	 * @link http://codex.wordpress.org/Function_Reference/add_theme_support#Post_Thumbnails
 	 */
-	//add_theme_support( 'post-thumbnails' );
+	add_theme_support( 'post-thumbnails' );
+
+	/*
+	 * Required for phpunit to function properly
+	 * @link https://core.trac.wordpress.org/ticket/29924
+	 */
+	add_image_size( 'testing', 640, 640, true );
 
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus( array(

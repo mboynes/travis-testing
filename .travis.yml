@@ -88,6 +88,9 @@ before_script:
     # Set install path for WordPress Coding Standards
     # @link https://github.com/squizlabs/PHP_CodeSniffer/blob/4237c2fc98cc838730b76ee9cee316f99286a2a7/CodeSniffer.php#L1941
     - scripts/phpcs --config-set installed_paths ../wordpress-coding-standards
+    # Address bug with core unit tests and custom themes
+    # @link https://core.trac.wordpress.org/ticket/29925
+    - sed -i "s/twentyfourteen/$theme_slug/" /tmp/wordpress/tests/phpunit/tests/theme.php
     # Hop into themes directory.
     - cd /tmp/wordpress/src/wp-content/themes/$theme_slug/
     # After CodeSniffer install you should refresh your path.
