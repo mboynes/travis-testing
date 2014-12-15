@@ -9,6 +9,8 @@
 	<rule ref="WordPress-VIP">
 		<!-- This is not mature enough and throws too many false positives -->
 		<exclude name="Generic.WhiteSpace.ScopeIndent.Incorrect" />
+		<exclude name="Generic.WhiteSpace.ScopeIndent.IncorrectExact" />
+		<exclude name="PEAR.Functions.FunctionCallSignature.Indent" />
 	</rule>
 
 	<!-- Tweak the VIP rules -->
