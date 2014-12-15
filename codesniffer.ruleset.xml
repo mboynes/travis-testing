@@ -3,6 +3,8 @@
 	<!-- Set a description for this ruleset. -->
 	<description>Code standard rules to check against a WordPress Theme.</description>
 
+	<exclude-pattern>tests/*</exclude-pattern>
+
 	<!-- Include the WordPress ruleset, with exclusions. -->
 	<rule ref="WordPress-VIP">
 		<!-- This is not mature enough and throws too many false positives -->
