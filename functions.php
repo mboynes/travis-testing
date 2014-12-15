@@ -135,7 +135,3 @@ require get_template_directory() . '/inc/customizer.php';
  */
 require get_template_directory() . '/inc/jetpack.php';
 
-/**
- * Load tweaks for Travis CI compatibility.
- */
-require get_template_directory() . '/inc/travis.php';

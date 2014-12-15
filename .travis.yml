@@ -16,8 +16,6 @@ php:
     - "5.4"
     # aliased to a recent 5.3.x version
     - "5.3"
-    # Current $required_php_version for WordPress: 5.2.4
-    # - "5.2"
 
 # Declare which versions of WordPress to test against.
 # Also declare whether or not to test in Multisite.
@@ -69,7 +67,8 @@ before_script:
     # Set up theme information. If this is a VIP theme, add the vip/ prefix
     - theme_slug=$(basename $(pwd))
     - mkdir -p "/tmp/wordpress/src/wp-content/themes/$theme_slug"
-    - cp -R . "/tmp/wordpress/src/wp-content/themes/$theme_slug/"    # Set up WordPress configuration.
+    - cp -R . "/tmp/wordpress/src/wp-content/themes/$theme_slug/"
+    # Set up WordPress configuration.
     - cd $WP_DEVELOP_DIR
     - echo $WP_DEVELOP_DIR
     - cp wp-tests-config-sample.php wp-tests-config.php
@@ -88,9 +87,6 @@ before_script:
     # Set install path for WordPress Coding Standards
     # @link https://github.com/squizlabs/PHP_CodeSniffer/blob/4237c2fc98cc838730b76ee9cee316f99286a2a7/CodeSniffer.php#L1941
     - scripts/phpcs --config-set installed_paths ../wordpress-coding-standards
-    # Address bug with core unit tests and custom themes
-    # @link https://core.trac.wordpress.org/ticket/29925
-    - sed -i "s/twentyfourteen/$theme_slug/" /tmp/wordpress/tests/phpunit/tests/theme.php
     # Hop into themes directory.
     - cd /tmp/wordpress/src/wp-content/themes/$theme_slug/
     # After CodeSniffer install you should refresh your path.
@@ -114,8 +110,8 @@ script:
     - $WP_DEVELOP_DIR/php-codesniffer/scripts/phpcs -p -s -v -n . --standard=./codesniffer.ruleset.xml --extensions=php
     # Test the theme's unit tests
     # - phpunit --configuration "/tmp/wordpress/src/wp-content/themes/$THEME_DIR/phpunit.xml.dist"
-    # Test the theme against core's unit tests
-    - phpunit --configuration /tmp/wordpress/phpunit.xml.dist
+    # Test the theme
+    - phpunit
 
 # Receive notifications for build results.
 # @link http://docs.travis-ci.com/user/notifications/#Email-notifications
