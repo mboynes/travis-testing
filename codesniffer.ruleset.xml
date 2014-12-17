@@ -7,19 +7,23 @@
 
 	<!-- Include the WordPress ruleset, with exclusions. -->
 	<rule ref="WordPress-VIP">
-		<!-- This is not mature enough and throws too many false positives -->
-		<exclude name="Generic.WhiteSpace.ScopeIndent.Incorrect" />
-		<exclude name="Generic.WhiteSpace.ScopeIndent.IncorrectExact" />
-		<exclude name="PEAR.Functions.FunctionCallSignature.Indent" />
+		<!-- These may need to be excluded if they throw too many false positives -->
+		<!-- <exclude name="Generic.WhiteSpace.ScopeIndent.Incorrect" /> -->
+		<!-- <exclude name="Generic.WhiteSpace.ScopeIndent.IncorrectExact" /> -->
+		<!-- <exclude name="PEAR.Functions.FunctionCallSignature.Indent" /> -->
+	</rule>
+
+	<rule ref="Generic.WhiteSpace.ScopeIndent.IncorrectExact">
+		<type>warning</type>
 	</rule>
 
 	<!-- Tweak the VIP rules -->
 	<rule ref="WordPress.XSS.EscapeOutput.">
 		<!-- We drop the severity to 3 so it doesn't fail in Travis. It can still be seen using the `severity` flag -->
-		<severity>3</severity>
+		<type>warning</type>
 	</rule>
 	<rule ref="WordPress.XSS.EscapeOutput">
-		<severity>3</severity>
+		<type>warning</type>
 	</rule>
 
 </ruleset>
